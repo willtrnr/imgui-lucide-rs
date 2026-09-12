@@ -1,0 +1,24 @@
+[package]
+name = "imgui-lucide"
+description = "Lucide icons for ImGUI"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+imgui = "*"
+
+[build-dependencies]
+cargo-emit = { workspace = true }
+imgui-lucide-build = { workspace = true }
+
+[features]
+default = ["default-tls"]
+
+default-tls = ["imgui-lucide-build/default-tls"]
+native-tls = ["imgui-lucide-build/native-tls"]
+rustls = ["imgui-lucide-build/rustls"]

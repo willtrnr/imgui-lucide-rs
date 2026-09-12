@@ -1,0 +1,44 @@
+[workspace]
+members = [
+  "imgui-lucide",
+  "imgui-lucide-build",
+]
+resolver = "3"
+
+[workspace.package]
+version = "0.1.0"
+authors = ["github.com/willtrnr"]
+edition = "2024"
+rust-version = "1.92"
+repository = "https://github.com/willtrnr/imgui-lucide-rs"
+license = "MIT"
+publish = false
+
+[workspace.dependencies]
+imgui-lucide = { path = "imgui-lucide" }
+imgui-lucide-build = { path = "imgui-lucide-build" }
+
+cargo-emit = { version = "0.2" }
+inflector = { package = "Inflector", version = "0.11" }
+prettyplease = { version = "0.3" }
+proc-macro2 = { version = "1.0", default-features = false }
+quote = { version = "1.0", default-features = false }
+reqwest = { version = "0.13", default-features = false }
+syn = { version = "3.0", default-features = false }
+
+[profile.release]
+split-debuginfo = "packed"
+strip = "debuginfo"
+lto = true
+panic = "abort"
+codegen-units = 1
+
+[profile.dev.build-override]
+opt-level = 2
+debug = false
+incremental = false
+codegen-units = 1
+
+[profile.release.build-override]
+opt-level = 2
+codegen-units = 1

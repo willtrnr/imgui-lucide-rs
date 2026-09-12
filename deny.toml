@@ -1,0 +1,26 @@
+[graph]
+targets = [
+  "x86_64-pc-windows-msvc",
+  "x86_64-unknown-linux-gnu",
+]
+all-features = true
+
+[advisories]
+unmaintained = "workspace"
+git-fetch-with-cli = true
+
+[bans]
+deny = [
+  { crate = "log", deny-multiple-versions = true },
+  { crate = "opentelemetry", deny-multiple-versions = true },
+  { crate = "tracing", deny-multiple-versions = true },
+  { crate = "webpki-roots", reason = "use system roots instead" },
+]
+
+[licenses]
+allow = [
+  "MIT",
+]
+private = { ignore = true }
+
+[sources]

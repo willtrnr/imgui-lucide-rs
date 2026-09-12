@@ -1,0 +1,25 @@
+[package]
+name = "imgui-lucide-build"
+description = "Lucide icons for ImGUI - Codegen"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+inflector = { workspace = true }
+prettyplease = { workspace = true }
+proc-macro2 = { workspace = true }
+quote = { workspace = true }
+reqwest = { workspace = true, features = ["blocking", "brotli", "charset", "gzip", "http2", "json", "system-proxy"] }
+syn = { workspace = true, features = ["parsing", "printing"] }
+
+[features]
+default = ["default-tls"]
+
+default-tls = ["reqwest/default-tls"]
+native-tls = ["reqwest/native-tls"]
+rustls = ["reqwest/rustls"]
