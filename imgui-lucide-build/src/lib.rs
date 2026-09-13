@@ -76,21 +76,21 @@ pub fn download_and_generate(config: &Config) -> Result<()> {
     });
 
     fs::write(
-        config.out_dir.join("lucide.rs"),
+        config.out_dir.join("lucide.gen.rs"),
         prettyplease::unparse(&parse_quote! {
-            const FONT_DATA: &[u8] = include_bytes!(#font_path);
+            const LUCIDE_TTF: &[u8] = include_bytes!(#font_path);
 
-            const FONT_GLYPH_RANGE: [u32; 3] = [#range_start, #range_end, 0u32];
+            const LUCIDE_TTF_RANGE: [u32; 3] = [#range_start, #range_end, 0u32];
 
             pub fn font_source(size: f32) -> imgui::FontSource<'static> {
                 imgui::FontSource::TtfData {
-                    data: FONT_DATA,
+                    data: LUCIDE_TTF,
                     size_pixels: size,
                     config: Some(imgui::FontConfig {
                         size_pixels: size,
                         pixel_snap_h: true,
                         glyph_offset: [0., (size / 5.).round()],
-                        glyph_ranges: imgui::FontGlyphRanges::from_slice(&FONT_GLYPH_RANGE),
+                        glyph_ranges: imgui::FontGlyphRanges::from_slice(&LUCIDE_TTF_RANGE),
                         glyph_min_advance_x: size,
                         ..Default::default()
                     }),
