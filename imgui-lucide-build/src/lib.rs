@@ -92,6 +92,7 @@ pub fn download_and_generate(config: &Config) -> Result<()> {
                         glyph_offset: [0., (size / 5.).round()],
                         glyph_ranges: imgui::FontGlyphRanges::from_slice(&LUCIDE_TTF_RANGE),
                         glyph_min_advance_x: size,
+                        name: Some("lucide.ttf".to_owned()),
                         ..Default::default()
                     }),
                 }
